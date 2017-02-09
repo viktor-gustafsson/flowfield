@@ -5,6 +5,7 @@ class Particle {
   private PVector acc;
   private float maxspeed;
   float h;
+  boolean forward;
 
   private PVector prevPos;
 
@@ -15,6 +16,7 @@ class Particle {
     acc = new PVector(0, 0);
     prevPos = pos.copy();
     maxspeed = 4;
+    forward = false;
   }
 
   void Reset() {
@@ -37,12 +39,20 @@ class Particle {
   } 
 
   void Show() {
-
-    stroke(h, 255, 255, 5);
-    h = h+0.5;
-    if (h> 255) {
-      h=0;
-    }
+    stroke(0,3);
+    //if (h == 255) {
+    //  forward = false;
+    //} 
+    //if (h==0) {
+    //  forward = true;
+    //}
+    //if (forward) {
+    //  h = h+0.5;
+    //} 
+    //if (!forward) {
+    //  h = h-0.5;
+    //}
+    //stroke(h, 255, 255, 3);
     strokeWeight(1);
     line(pos.x, pos.y, prevPos.x, prevPos.y);
     UpdatePrevious();

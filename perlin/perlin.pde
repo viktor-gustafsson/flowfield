@@ -7,7 +7,7 @@ StopWatch sw;
 void setup() {
   colorMode(HSB);
   background(255);
-  size(1920, 1080);
+  size(1920, 1080,P2D);
   
   //Variables
   scl = 30;
@@ -20,7 +20,7 @@ void setup() {
   rows = int(height/scl);
  
   //flowfield and particles
-  particles = new Particle[2500];
+  particles = new Particle[5000];
   flowField = new PVector[cols*rows];
   CreateParticles();
   
@@ -38,8 +38,6 @@ void Reset() {
 }
 
 void draw() {
-  //println(frameRate);
-  println(sw.GetSeconds());
   //for debug
   //background(255);
 
@@ -52,7 +50,7 @@ void draw() {
     float xoff=0;
     for (int x = 0; x<cols; x++) {
       int index = x+y*cols;
-      float angle = noise(xoff, yoff, zoff)*TWO_PI*5;
+      float angle = noise(xoff, yoff, zoff)*TWO_PI*4;
       PVector v = PVector.fromAngle(angle).setMag(1);
       flowField[index] = v;
       xoff+= inc;
