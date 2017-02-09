@@ -4,6 +4,7 @@ class Particle {
   private PVector vel;
   private PVector acc;
   private float maxspeed;
+  int h = 0;
 
   private PVector prevPos;
 
@@ -35,7 +36,12 @@ class Particle {
   } 
 
   void Show() {
-    stroke(0, 3);
+
+    stroke(h, 255, 255, 5);
+    h = h+1;
+    if (h> 255) {
+      h=0;
+    }
     strokeWeight(1);
     line(pos.x, pos.y, prevPos.x, prevPos.y);
     UpdatePrevious();
