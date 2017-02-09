@@ -4,11 +4,12 @@ class Particle {
   private PVector vel;
   private PVector acc;
   private float maxspeed;
-  int h = 0;
+  int h;
 
   private PVector prevPos;
 
   Particle() {
+    h=0;
     pos = new PVector(random(width), random(height));
     vel = new PVector(0, 0);
     acc = new PVector(0, 0);
