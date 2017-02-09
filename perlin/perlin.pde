@@ -1,9 +1,6 @@
-int scl = 30;
-int cols, rows;
-float inc = 0.09;
-float zinc = 0.0001;
-float zoff = 0;
-Particle[] particles = new Particle[5000];
+int scl, cols, rows;
+float inc, zinc, zoff;
+Particle[] particles;
 PVector[] flowField;
 StopWatch sw;
 
@@ -11,13 +8,23 @@ void setup() {
   colorMode(HSB);
   background(255);
   size(1920, 1080);
-
+  
+  //Variables
+  scl = 30;
+  inc = 0.09;
+  zinc = 0.0001;
+  zoff = 0;
+  
+  //Field grid
   cols = int(width/scl);
   rows = int(height/scl);
-
-
+ 
+  //flowfield and particles
+  particles = new Particle[5000];
   flowField = new PVector[cols*rows];
   CreateParticles();
+  
+  //Timekeeper
   sw = new StopWatch();
   sw.Start();
 }
@@ -43,7 +50,7 @@ void draw() {
     float xoff=0;
     for (int x = 0; x<cols; x++) {
       int index = x+y*cols;
-      float angle = noise(xoff, yoff, zoff)*TWO_PI*5;
+      float angle = noise(xoff, yoff, zoff)*PI*5;
       PVector v = PVector.fromAngle(angle).setMag(1);
       flowField[index] = v;
       xoff+= inc;

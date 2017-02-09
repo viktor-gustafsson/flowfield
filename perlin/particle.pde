@@ -1,11 +1,19 @@
 class Particle {
 
-  private PVector pos = new PVector(random(width), random(height));
-  private PVector vel = new PVector(0, 0);
-  private PVector acc = new PVector(0, 0);
-  private float maxspeed = 4;
+  private PVector pos;
+  private PVector vel;
+  private PVector acc;
+  private float maxspeed;
 
-  private PVector prevPos = pos.copy();
+  private PVector prevPos;
+
+  Particle() {
+    pos = new PVector(random(width), random(height));
+    vel = new PVector(0, 0);
+    acc = new PVector(0, 0);
+    prevPos = pos.copy();
+    maxspeed = 4;
+  }
 
   void Reset() {
     vel.x = 0;

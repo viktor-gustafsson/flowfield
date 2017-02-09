@@ -1,7 +1,13 @@
 class StopWatch {
-  private int startTime = 0, stopTime = 0;
-  private boolean running = false;  
+  private int startTime, stopTime;
+  private boolean running;
 
+
+  StopWatch() {
+    startTime = 0;
+    stopTime = 0;
+    running= false;
+  }
   public void Start() {
     startTime = millis();
     running = true;
@@ -26,7 +32,7 @@ class StopWatch {
   public int GetHours() {
     return (GetElapsedTime() / (1000*60*60)) % 24;
   }
-  public void Restart(){
-  startTime = millis();
+  public void Restart() {
+    startTime = millis();
   }
 }
