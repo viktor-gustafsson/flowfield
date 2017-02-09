@@ -11,7 +11,7 @@ void setup() {
   
   //Variables
   scl = 30;
-  inc = 0.09;
+  inc = 0.1;
   zinc = 0.0001;
   zoff = 0;
   
@@ -20,7 +20,7 @@ void setup() {
   rows = int(height/scl);
  
   //flowfield and particles
-  particles = new Particle[5000];
+  particles = new Particle[2500];
   flowField = new PVector[cols*rows];
   CreateParticles();
   
@@ -42,7 +42,7 @@ void draw() {
   //for debug
   //background(255);
 
-  if (sw.GetSeconds() > 90) {
+  if (sw.GetSeconds() >= 90) {
     Reset();
   }
 
