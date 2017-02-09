@@ -7,7 +7,7 @@ StopWatch sw;
 void setup() {
   colorMode(HSB);
   background(255);
-  size(1920, 1080,P3D);
+  size(1920, 1080);
   
   //Variables
   scl = 30;
