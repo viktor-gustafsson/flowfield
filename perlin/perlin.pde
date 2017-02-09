@@ -42,7 +42,7 @@ void draw() {
   //for debug
   //background(255);
 
-  if (sw.GetMinutes() >= 2) {
+  if (sw.GetSeconds() > 90) {
     Reset();
   }
 
