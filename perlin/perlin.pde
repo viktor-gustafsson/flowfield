@@ -7,7 +7,7 @@ StopWatch sw;
 void setup() {
   colorMode(HSB);
   background(255);
-  size(1920, 1080);
+  size(1920, 1080,P3D);
   
   //Variables
   scl = 30;
@@ -38,6 +38,7 @@ void Reset() {
 }
 
 void draw() {
+  println(frameRate);
   //for debug
   //background(255);
 
@@ -50,7 +51,7 @@ void draw() {
     float xoff=0;
     for (int x = 0; x<cols; x++) {
       int index = x+y*cols;
-      float angle = noise(xoff, yoff, zoff)*PI*5;
+      float angle = noise(xoff, yoff, zoff)*TWO_PI*5;
       PVector v = PVector.fromAngle(angle).setMag(1);
       flowField[index] = v;
       xoff+= inc;
