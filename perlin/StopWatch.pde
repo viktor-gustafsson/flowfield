@@ -17,20 +17,19 @@ class StopWatch {
     running = false;
   }
   private int GetElapsedTime() {
-
     if (running) {
       return (millis() - startTime);
     }
     return (stopTime - startTime);
   }
   public int GetSeconds() {
-    return (GetElapsedTime() / 1000) % 60;
+    return (GetElapsedTime() / 1000);
   }
   public int GetMinutes() {
-    return (GetElapsedTime() / (1000*60)) % 60;
+    return (GetElapsedTime() / (1000*60));
   }
   public int GetHours() {
-    return (GetElapsedTime() / (1000*60*60)) % 24;
+    return (GetElapsedTime() / (1000*60*60));
   }
   public void Restart() {
     startTime = millis();

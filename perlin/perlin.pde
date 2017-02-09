@@ -38,7 +38,8 @@ void Reset() {
 }
 
 void draw() {
-  println(frameRate);
+  //println(frameRate);
+  println(sw.GetSeconds());
   //for debug
   //background(255);
 
