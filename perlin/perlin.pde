@@ -1,3 +1,6 @@
+import processing.sound.*;
+
+SoundFile music;
 int scl, cols, rows;
 float inc, zinc, zoff;
 Particle[] particles;
@@ -5,12 +8,14 @@ PVector[] flowField;
 StopWatch sw;
 
 void setup() {
+  //Display params
   colorMode(HSB);
   background(255);
   size(1920, 1080,P2D);
+  frameRate(30);
   
   //Variables
-  scl = 30;
+  scl = 40;
   inc = 0.1;
   zinc = 0.0001;
   zoff = 0;
@@ -27,6 +32,11 @@ void setup() {
   //Timekeeper
   sw = new StopWatch();
   sw.Start();
+  
+  //Music
+  music = new SoundFile(this,"musicmono.mp3");
+  music.amp(0.045);
+  music.loop();
 }
 
 void Reset() {
