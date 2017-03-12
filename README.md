@@ -19,7 +19,3 @@ This is not a standalone application, you need to download this and run it in th
 ## Credits
 
 Thank you to The Coding Train for inspiration and lectures on perlin noise inside P5js and Processing.
-
-## License
-
-TODO: Write license
