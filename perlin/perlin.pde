@@ -1,7 +1,8 @@
 import processing.sound.*;
 
 SoundFile music;
-int scl, cols, rows;
+int scl, cols, rows, backgroundColor, backgroundColorIncrement;
+boolean whiteBackground;
 float inc, zinc, zoff;
 Particle[] particles;
 PVector[] flowField;
@@ -11,49 +12,49 @@ void setup() {
   //Display params
   colorMode(HSB);
   background(255);
-  size(1920, 1080,P2D);
+  size(1920, 1080);
   frameRate(30);
-  
+
   //Variables
   scl = 40;
   inc = 0.1;
   zinc = 0.0001;
   zoff = 0;
-  
+  backgroundColor = 255;
+  backgroundColorIncrement = 5;
+  whiteBackground = true;
+
   //Field grid
   cols = int(width/scl);
   rows = int(height/scl);
- 
+
   //flowfield and particles
   particles = new Particle[5000];
   flowField = new PVector[cols*rows];
   CreateParticles();
-  
+
   //Timekeeper
   sw = new StopWatch();
   sw.Start();
-  
+
   //Music
-  music = new SoundFile(this,"musicmono.mp3");
+  music = new SoundFile(this, "musicmono.mp3");
   music.amp(0.045);
   music.loop();
 }
 
 void Reset() {
-  background(255);
+  //background(back);
   for (Particle p : particles) {
     p.Reset();
   }
   sw.Restart();
+  whiteBackground = !whiteBackground;
 }
 
 void draw() {
   //for debug
   //background(255);
-
-  if (sw.GetSeconds() >= 90) {
-    Reset();
-  }
 
   float yoff = 0;
   for (int y = 0; y<rows; y++) {
@@ -77,8 +78,20 @@ void draw() {
     yoff +=inc;
     zoff +=zinc;
   }
-
   FlowFieldParticles(flowField);
+
+  //fade background loop
+  if (sw.GetSeconds() >= 90) {
+    if (whiteBackground && backgroundColor > 0) {
+      backgroundColor += -backgroundColorIncrement;
+    } else if (!whiteBackground && backgroundColor < 255) {
+      backgroundColor += backgroundColorIncrement;
+    } else if (backgroundColor == 255 || backgroundColor == 0) {
+      Reset();
+    }
+    background(backgroundColor);
+    FlowFieldParticles(flowField);
+  }
 }
 
 void CreateParticles() {

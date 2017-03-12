@@ -4,8 +4,9 @@ class Particle {
   private PVector vel;
   private PVector acc;
   private float maxspeed;
-  float h;
-  boolean forward;
+  private boolean particleColorWhite;
+  private boolean forward;
+  private float h;
 
   private PVector prevPos;
 
@@ -25,6 +26,7 @@ class Particle {
     acc.x = 0;
     acc.y = 0;
     NewParticlePos();
+    particleColorWhite = !particleColorWhite;
   }
 
   void Update() {
@@ -39,7 +41,12 @@ class Particle {
   } 
 
   void Show() {
-    stroke(0,3);
+    if (particleColorWhite) {
+      stroke(255, 3);
+    } else if (!particleColorWhite) {
+      stroke(0, 3);
+    }
+    // this is RGB coloration of the particles. Uncomment to activate RGB coloration
     //if (h == 255) {
     //  forward = false;
     //} 
