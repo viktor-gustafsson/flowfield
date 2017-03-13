@@ -19,3 +19,9 @@ This is not a standalone application, you need to download this and run it in th
 ## Credits
 
 Thank you to The Coding Train for inspiration and lectures on perlin noise inside P5js and Processing.
+The music is downloaded from Free Music Archive. 
+Artist: Jack Anderton
+Album: Vale
+Song: Gully
+
+http://freemusicarchive.org/music/Jack_Anderton/Vale/
