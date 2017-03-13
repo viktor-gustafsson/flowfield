@@ -12,7 +12,10 @@ void setup() {
   //Display params
   colorMode(HSB);
   background(255);
-  size(1920, 1080);
+  // uncomment size to set fixed window size
+  //size(800, 600);
+  // comment out this line if you use fixed window size
+  fullScreen(P2D);
   frameRate(30);
 
   //Variables
