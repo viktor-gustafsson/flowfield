@@ -28,4 +28,6 @@ Album: Vale
 
 Song: Gully
 
+License to song: https://creativecommons.org/licenses/by-nc-nd/4.0/
+
 http://freemusicarchive.org/music/Jack_Anderton/Vale/
