@@ -17,6 +17,7 @@ void setup() {
   // comment out this line if you use fixed window size
   fullScreen(P2D);
   frameRate(30);
+  smooth();
 
   //Variables
   scl = 40;
@@ -55,10 +56,7 @@ void Reset() {
   whiteBackground = !whiteBackground;
 }
 
-void draw() {
-  //for debug
-  //background(255);
-
+void UpdateFlowField() {
   float yoff = 0;
   for (int y = 0; y<rows; y++) {
     float xoff=0;
@@ -68,20 +66,25 @@ void draw() {
       PVector v = PVector.fromAngle(angle).setMag(1);
       flowField[index] = v;
       xoff+= inc;
-
-      //use for debug
-      //stroke(0);
-      //pushMatrix();
-      //strokeWeight(1);
-      //translate(x*scl, y*scl);
-      //rotate(v.heading());
-      //line(0, 0, scl, 0);
-      //popMatrix();
     }
     yoff +=inc;
     zoff +=zinc;
   }
   FlowFieldParticles(flowField);
+}
+
+void draw() {
+  //for debug
+  //background(255);
+  UpdateFlowField();
+  //    //use for debug
+  //    //stroke(0);
+  //    //pushMatrix();
+  //    //strokeWeight(1);
+  //    //translate(x*scl, y*scl);
+  //    //rotate(v.heading());
+  //    //line(0, 0, scl, 0);
+  //    //popMatrix();
 
   //fade background loop
   if (sw.GetSeconds() >= 90) {
@@ -93,7 +96,7 @@ void draw() {
       Reset();
     }
     background(backgroundColor);
-    FlowFieldParticles(flowField);
+    UpdateFlowField();
   }
 }
 
